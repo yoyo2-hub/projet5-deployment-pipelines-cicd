@@ -29,7 +29,7 @@ Vous travaillez sur les données de vente de l'entreprise fictive **AdventureWor
 ## 5. Structure du repo
 
 ```
-po3-projet05-deployment-pipelines-cicd/
+projet5-deployment-pipelines-cicd/
 ├── README.md
 ├── docs/
 │   ├── architecture.md          → schéma du pipeline de déploiement
@@ -70,7 +70,7 @@ Dans `docs/note-pedagogique.md`, structurez votre note selon ce plan (imposé po
 
 ## 9. Lien avec les autres projets du domaine
 
-- **Projet 4** (`po3-projet04-pbip-git-alm`) travaille le versionning en amont de votre étape de déploiement
-- **Projet 21** (`po3-projet21-tests-automatises-nonregression`) ajoute des tests qui devraient idéalement s'exécuter **juste avant** votre étape de déploiement
+- **Projet 4** (`projet4-pbip-git-alm`) travaille le versionning en amont de votre étape de déploiement
+- **Projet 21** (`projet21-tests-automatises-nonregression`) ajoute des tests qui devraient idéalement s'exécuter **juste avant** votre étape de déploiement
 
 ➡️ Précisez clairement dans votre note pédagogique à quel moment vos contrôles interviendraient par rapport aux tests automatisés de l'équipe du Projet 21.
