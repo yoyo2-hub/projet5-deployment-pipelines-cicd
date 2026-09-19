@@ -1,6 +1,6 @@
-# po3-projet04-pbip-git-alm
+#projet5-deployment-pipelines-cicd
 
-## Industrialiser un projet Power BI avec PBIP, Git, collaboration et environnements DEV–TEST–PROD
+## Automatiser le déploiement Power BI avec Deployment Pipelines
 
 **Domaine :** DevOps, ALM & CI/CD — **Product Owner :** PO 3
 
@@ -8,7 +8,7 @@
 
 ## 1. Besoin métier
 
-Aujourd'hui, un rapport Power BI est souvent modifié directement, sans trace claire des changements, sans possibilité simple de revenir en arrière, et sans étape de validation avant que la modification n'atteigne les utilisateurs finaux. Ce projet répond à un besoin réel : **permettre à une équipe de faire évoluer un rapport Power BI de façon maîtrisée**, comme on le ferait pour n'importe quel projet logiciel — avec un historique des modifications, une revue avant validation, et une séparation claire entre développement, test et production.
+Une fois qu'un rapport Power BI a été modifié et validé en développement, il faut le faire avancer vers les utilisateurs finaux de façon fiable — sans copier-coller manuel source d'erreurs, sans casser la production, et avec la possibilité de revenir en arrière en cas de problème. Ce projet répond à ce besoin : **automatiser et sécuriser le passage d'une solution Power BI entre les environnements de développement, de test et de production.**
 
 ## 2. Contexte fil rouge
 
@@ -16,27 +16,26 @@ Vous travaillez sur les données de vente de l'entreprise fictive **AdventureWor
 
 ## 3. Description générale du projet
 
-**Mission :** transformer une solution Power BI existante en projet **PBIP**, la versionner avec **Git** (usage réel de branches et de pull requests), puis organiser un cycle **DEV–TEST–PROD**. Vous devez être capables de montrer, de bout en bout, le parcours d'une modification : depuis son développement jusqu'à sa validation en environnement de test.
+**Mission :** à partir d'une solution **déjà versionnée**, configurer ou simuler un **processus de déploiement** entre Développement, Test et Production, avec les **Power BI Deployment Pipelines**. Vous devez documenter les étapes du déploiement, les contrôles à effectuer avant la mise en production, les paramètres qui dépendent de l'environnement, et une procédure simple de **retour arrière (rollback)**.
 
 ## 4. Comment démarrer
 
-1. **Point de départ :** vous n'avez pas à construire un nouveau rapport Power BI de zéro. Réutilisez un rapport `.pbix` déjà construit pendant vos TP/exercices sur la base AdventureWorks (par exemple un rapport simple avec quelques pages : CA par région, top produits, évolution mensuelle). S'il n'en existe pas un tout prêt, construisez-en un **volontairement simple** — l'objectif du projet n'est pas la richesse du rapport, mais la démonstration du processus autour de lui.
-2. Convertissez ce rapport au format **PBIP** (Power BI Desktop → options → "Power BI Project (.pbip)").
-3. Initialisez ce repo Git et versionnez les fichiers PBIP obtenus.
-4. Définissez avec votre équipe une convention de nommage de branches et le rôle de "relecteur" sur les pull requests.
-5. Simulez concrètement vos 3 environnements DEV/TEST/PROD (3 workspaces Power BI Service, ou 3 dossiers/branches locales — à documenter dans `docs/architecture.md`).
-6. Démontrez le parcours complet d'une modification : développement → pull request → revue → fusion → validation en TEST.
+1. **Point de départ :** vous n'avez pas besoin d'attendre le vrai livrable de l'équipe du Projet 4. Simulez vous-même une solution "déjà versionnée" : reprenez ou créez un rapport Power BI simple sur AdventureWorks, convertissez-le en PBIP si besoin, et placez-le dans `pbip/` comme point de départ.
+2. Créez 3 workspaces Power BI Service (DEV / TEST / PROD) et reliez-les avec un **Deployment Pipeline**.
+3. Identifiez au moins un paramètre qui doit changer selon l'environnement (ex : une source de données ou une chaîne de connexion) et configurez les règles de déploiement correspondantes.
+4. Documentez les contrôles que vous effectuez avant chaque passage à l'environnement suivant.
+5. Démontrez un scénario de **rollback** : un déploiement qui pose problème, et son annulation.
 
 ## 5. Structure du repo
 
 ```
-po3-projet04-pbip-git-alm/
+po3-projet05-deployment-pipelines-cicd/
 ├── README.md
 ├── docs/
-│   ├── architecture.md          → schéma de votre organisation Git/environnements
+│   ├── architecture.md          → schéma du pipeline de déploiement
 │   └── note-pedagogique.md      → à remplir au fur et à mesure (voir section 6)
-├── pbip/                        → vos fichiers PBIP versionnés
-├── scripts/                     → scripts éventuels (vide si non utilisé)
+├── pbip/                        → votre point de départ "déjà versionné" (simulé)
+├── scripts/                     → scripts d'automatisation du déploiement, si utilisés
 └── tests/                       → non utilisé pour ce projet (laisser vide)
 ```
 
@@ -56,22 +55,22 @@ Dans `docs/note-pedagogique.md`, structurez votre note selon ce plan (imposé po
 
 ## 7. Livrables attendus
 
-- Une démonstration fonctionnelle du cycle complet
-- Les fichiers PBIP et l'historique Git (ce repo)
-- Un schéma d'architecture (`docs/architecture.md`)
+- Une démonstration fonctionnelle du déploiement entre environnements
+- Les fichiers/scripts nécessaires à la reproduction (ce repo)
+- Un schéma du pipeline de déploiement (`docs/architecture.md`)
 - La note pédagogique complète (`docs/note-pedagogique.md`)
 
 ## 8. Critères de réussite
 
 - Le scénario métier est compréhensible
-- La solution est reproductible par quelqu'un d'autre
+- La solution est reproductible
 - Les choix techniques sont justifiés simplement
 - Le résultat peut être démontré en direct
 - Les limites et points de vigilance sont explicités
 
 ## 9. Lien avec les autres projets du domaine
 
-- **Projet 5** (`po3-projet05-deployment-pipelines-cicd`) part conceptuellement d'une solution déjà versionnée comme la vôtre pour travailler le déploiement
-- **Projet 21** (`po3-projet21-tests-automatises-nonregression`) viendra ajouter des tests avant le déploiement
+- **Projet 4** (`po3-projet04-pbip-git-alm`) travaille le versionning en amont de votre étape de déploiement
+- **Projet 21** (`po3-projet21-tests-automatises-nonregression`) ajoute des tests qui devraient idéalement s'exécuter **juste avant** votre étape de déploiement
 
-➡️ Documentez clairement votre structure et vos conventions : les autres équipes s'y réfèrent pour rester cohérentes.
+➡️ Précisez clairement dans votre note pédagogique à quel moment vos contrôles interviendraient par rapport aux tests automatisés de l'équipe du Projet 21.
