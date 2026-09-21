@@ -2,7 +2,7 @@
 
 ## Automatiser le déploiement Power BI avec Deployment Pipelines
 
-**Domaine :** DevOps, ALM & CI/CD — **Product Owner :** PO 3
+**Domaine :** DevOps, ALM & CI/CD — **Product Owner :** Chaima Dallel
 
 ---
 
